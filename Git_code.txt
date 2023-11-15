@@ -1,0 +1,271 @@
+>Εντολές στο command line      Github link: https://github.com/Alivanos/erg2_2449.git
+------------------------------------------------------------------------------------------------------------
+Ερωτήματα 1-5
+
+C:\Users\Admin\Desktop\Rainfall>git init
+Initialized empty Git repository in C:/Users/Admin/Desktop/Rainfall/.git/
+
+C:\Users\Admin\Desktop\Rainfall>git add .
+
+C:\Users\Admin\Desktop\Rainfall>git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   .gitignore
+        new file:   rainfall.f95
+
+
+C:\Users\Admin\Desktop\Rainfall>git commit -m "c1 - Initial Empty Program"
+[main (root-commit) 3c14434] c1 - Initial Empty Program
+ 2 files changed, 6 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 rainfall.f95
+
+C:\Users\Admin\Desktop\Rainfall>git log --all --oneline --graph --decorate
+* 3c14434 (HEAD -> main) c1 - Initial Empty Program
+------------------------------------------------------------------------------------------------------------
+Ερωτήματα 6-8
+
+C:\Users\Admin\Desktop\Rainfall>git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   rainfall.f95
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        data.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+C:\Users\Admin\Desktop\Rainfall>git add .
+
+C:\Users\Admin\Desktop\Rainfall>git commit -m "c2 - Read and display 5 items from data.txt"
+[main bbe4029] c2 - Read and display 5 items from data.txt
+ 2 files changed, 32 insertions(+)
+ create mode 100644 data.txt
+
+C:\Users\Admin\Desktop\Rainfall>git log --all --oneline --graph --decorate
+* bbe4029 (HEAD -> main) c2 - Read and display 5 items from data.txt
+* 3c14434 c1 - Initial Empty Program
+------------------------------------------------------------------------------------------------------------
+Ερωτήματα 9-10
+
+C:\Users\Admin\Desktop\Rainfall>git commit -a -m "c3 - Added more lines to data.txt"
+[main c64872d] c3 - Added more lines to data.txt
+ 1 file changed, 15 insertions(+), 1 deletion(-)
+
+C:\Users\Admin\Desktop\Rainfall>git log --all --oneline --graph --decorate
+* c64872d (HEAD -> main) c3 - Added more lines to data.txt
+* bbe4029 c2 - Read and display 5 items from data.txt
+* 3c14434 c1 - Initial Empty Program
+------------------------------------------------------------------------------------------------------------
+Ερωτήματα 11-12
+
+C:\Users\Admin\Desktop\Rainfall>git commit -a -m "c4 - Read and display all items (up to 50) from data.txt"
+[main 169b044] c4 - Read and display all items (up to 50) from data.txt
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+C:\Users\Admin\Desktop\Rainfall>git log --all --oneline --graph --decorate
+* 169b044 (HEAD -> main) c4 - Read and display all items (up to 50) from data.txt
+* c64872d c3 - Added more lines to data.txt
+* bbe4029 c2 - Read and display 5 items from data.txt
+* 3c14434 c1 - Initial Empty Program
+------------------------------------------------------------------------------------------------------------
+Ερωτήματα 13-16
+
+C:\Users\Admin\Desktop\Rainfall>git branch feature
+
+C:\Users\Admin\Desktop\Rainfall>git switch feature
+Switched to branch 'feature'
+
+C:\Users\Admin\Desktop\Rainfall>git commit -a -m "c5 - subroutine"
+[feature 4d496d3] c5 - subroutine
+ 1 file changed, 29 insertions(+), 7 deletions(-)
+
+C:\Users\Admin\Desktop\Rainfall>git commit -m "c5 - Created subroutine to read file" --amend
+[feature 21b42f1] c5 - Created subroutine to read file
+ Date: Wed Nov 15 18:17:17 2023 +0200
+ 1 file changed, 29 insertions(+), 7 deletions(-)
+
+C:\Users\Admin\Desktop\Rainfall>git log --all --oneline --graph --decorate
+* 21b42f1 (HEAD -> feature) c5 - Created subroutine to read file
+* 169b044 (main) c4 - Read and display all items (up to 50) from data.txt
+* c64872d c3 - Added more lines to data.txt
+* bbe4029 c2 - Read and display 5 items from data.txt
+* 3c14434 c1 - Initial Empty Program
+------------------------------------------------------------------------------------------------------------
+Ερωτήματα 16-19
+
+C:\Users\Admin\Desktop\Rainfall>git switch main
+Switched to branch 'main'
+
+C:\Users\Admin\Desktop\Rainfall>git merge feature
+Updating 169b044..21b42f1
+Fast-forward
+ rainfall.f95 | 36 +++++++++++++++++++++++++++++-------
+ 1 file changed, 29 insertions(+), 7 deletions(-)
+
+C:\Users\Admin\Desktop\Rainfall>git branch -d feature
+Deleted branch feature (was 21b42f1).
+
+C:\Users\Admin\Desktop\Rainfall>git reset --hard HEAD~
+HEAD is now at 169b044 c4 - Read and display all items (up to 50) from data.txt
+
+C:\Users\Admin\Desktop\Rainfall>git log --all --oneline --graph --decorate
+* 169b044 (HEAD -> main) c4 - Read and display all items (up to 50) from data.txt
+* c64872d c3 - Added more lines to data.txt
+* bbe4029 c2 - Read and display 5 items from data.txt
+* 3c14434 c1 - Initial Empty Program
+
+C:\Users\Admin\Desktop\Rainfall>git reflog
+169b044 (HEAD -> main) HEAD@{0}: reset: moving to HEAD~
+21b42f1 HEAD@{1}: merge feature: Fast-forward
+169b044 (HEAD -> main) HEAD@{2}: checkout: moving from feature to main
+21b42f1 HEAD@{3}: commit (amend): c5 - Created subroutine to read file
+4d496d3 HEAD@{4}: commit: c5 - subroutine
+169b044 (HEAD -> main) HEAD@{5}: checkout: moving from main to feature
+169b044 (HEAD -> main) HEAD@{6}: commit: c4 - Read and display all items (up to 50) from data.txt
+c64872d HEAD@{7}: commit: c3 - Added more lines to data.txt
+bbe4029 HEAD@{8}: commit: c2 - Read and display 5 items from data.txt
+3c14434 HEAD@{9}: commit (initial): c1 - Initial Empty Program
+
+C:\Users\Admin\Desktop\Rainfall>git reset --hard 21b42f1
+HEAD is now at 21b42f1 c5 - Created subroutine to read file
+
+C:\Users\Admin\Desktop\Rainfall>git log --all --oneline --graph --decorate
+* 21b42f1 (HEAD -> main) c5 - Created subroutine to read file
+* 169b044 c4 - Read and display all items (up to 50) from data.txt
+* c64872d c3 - Added more lines to data.txt
+* bbe4029 c2 - Read and display 5 items from data.txt
+* 3c14434 c1 - Initial Empty Program
+------------------------------------------------------------------------------------------------------------
+Ερωτήματα 20-24
+
+C:\Users\Admin\Desktop\Rainfall>git switch -c feature
+Switched to a new branch 'feature'
+
+C:\Users\Admin\Desktop\Rainfall>git commit -a -m "c6 - Added average rainfall function"
+[feature 50bea38] c6 - Added average rainfall function
+ 1 file changed, 26 insertions(+)
+
+C:\Users\Admin\Desktop\Rainfall>git switch main
+Switched to branch 'main'
+
+C:\Users\Admin\Desktop\Rainfall>git merge --no-ff feature
+Merge made by the 'ort' strategy.
+ rainfall.f95 | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
+
+C:\Users\Admin\Desktop\Rainfall>git branch -d feature
+Deleted branch feature (was 50bea38).
+
+C:\Users\Admin\Desktop\Rainfall>git log --all --oneline --graph --decorate
+*   bda182a (HEAD -> main) Merge branch 'feature'
+|\
+| * 50bea38 c6 - Added average rainfall function
+|/
+* 21b42f1 c5 - Created subroutine to read file
+* 169b044 c4 - Read and display all items (up to 50) from data.txt
+* c64872d c3 - Added more lines to data.txt
+* bbe4029 c2 - Read and display 5 items from data.txt
+* 3c14434 c1 - Initial Empty Program
+------------------------------------------------------------------------------------------------------------
+Ερωτήματα 25-27
+
+C:\Users\Admin\Desktop\Rainfall>git checkout 169b044
+Note: switching to '169b044'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 169b044 c4 - Read and display all items (up to 50) from data.txt
+
+C:\Users\Admin\Desktop\Rainfall>git diff c64872d 169b044
+diff --git a/rainfall.f95 b/rainfall.f95
+index 4679836..c07e9e2 100644
+--- a/rainfall.f95
++++ b/rainfall.f95
+@@ -1,10 +1,10 @@
+ program rainfall
+
+ implicit none
+-integer,parameter::N=5
+-character(13)::A(N)
++integer,parameter::Nmax=50
++character(13)::A(Nmax)
+ integer::i,st
+-integer::B(N)
++integer::B(Nmax)
+
+ open(10,file='data.txt',iostat=st)
+ if(st/=0)then
+@@ -15,7 +15,7 @@ end if
+ read(10,*)
+ print*," Town        ","        Rain"
+
+-do i=1,N
++do i=1,Nmax
+   read(10,*,iostat=st)A(i),B(i)
+   if(st==-1)exit
+
+C:\Users\Admin\Desktop\Rainfall>git checkout bda182a
+Previous HEAD position was 169b044 c4 - Read and display all items (up to 50) from data.txt
+HEAD is now at bda182a Merge branch 'feature'
+
+C:\Users\Admin\Desktop\Rainfall>git log --all --oneline --graph --decorate
+*   bda182a (HEAD, main) Merge branch 'feature'
+|\
+| * 50bea38 c6 - Added average rainfall function
+|/
+* 21b42f1 c5 - Created subroutine to read file
+* 169b044 c4 - Read and display all items (up to 50) from data.txt
+* c64872d c3 - Added more lines to data.txt
+* bbe4029 c2 - Read and display 5 items from data.txt
+* 3c14434 c1 - Initial Empty Program
+------------------------------------------------------------------------------------------------------------
+Ερωτήματα 28-30
+
+C:\Users\Admin\Desktop\Rainfall>git remote add origin https://github.com/Alivanos/erg2_2449.git
+
+C:\Users\Admin\Desktop\Rainfall>git branch -M main
+
+C:\Users\Admin\Desktop\Rainfall>git push -u origin main
+info: please complete authentication in your browser...
+Enumerating objects: 21, done.
+Counting objects: 100% (21/21), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (20/20), done.
+Writing objects: 100% (21/21), 2.64 KiB | 541.00 KiB/s, done.
+Total 21 (delta 7), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (7/7), done.
+To https://github.com/Alivanos/erg2_2449.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+
+C:\Users\Admin\Desktop\Rainfall>git log --all --oneline --graph --decorate
+*   bda182a (HEAD -> main, origin/main) Merge branch 'feature'
+|\
+| * 50bea38 c6 - Added average rainfall function
+|/
+* 21b42f1 c5 - Created subroutine to read file
+* 169b044 c4 - Read and display all items (up to 50) from data.txt
+* c64872d c3 - Added more lines to data.txt
+* bbe4029 c2 - Read and display 5 items from data.txt
+* 3c14434 c1 - Initial Empty Program
