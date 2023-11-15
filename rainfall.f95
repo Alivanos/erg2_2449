@@ -1,10 +1,10 @@
 program rainfall
 
 implicit none
-integer,parameter::N=5
-character(13)::A(N)
+integer,parameter::Nmax=50
+character(13)::A(Nmax)
 integer::i,st
-integer::B(N)
+integer::B(Nmax)
 
 open(10,file='data.txt',iostat=st)
 if(st/=0)then
@@ -15,7 +15,7 @@ end if
 read(10,*)
 print*," Town        ","        Rain"
 
-do i=1,N
+do i=1,Nmax
   read(10,*,iostat=st)A(i),B(i)
   if(st==-1)exit
   print*,A(i),B(i)
