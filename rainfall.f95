@@ -2,6 +2,7 @@ program rainfall
 
 implicit none
 integer::N,Nmax
+real::z
 integer,allocatable::B(:)
 character(13),allocatable::A(:)
 
@@ -12,7 +13,15 @@ allocate(A(Nmax),B(Nmax))
 
 call list(Nmax,A,B,N)
 
+z=avg_rain(B,N)
+
+print*
+print*,"Average rainfall:",z,"[mm]"
+
+
+
 contains
+
 
 subroutine list(M,T,R,k)
 
@@ -44,5 +53,22 @@ print*,"Number of rows:",k
 close(10)
 
 end subroutine
+
+
+real function avg_rain(W,s)
+
+integer::i
+integer,intent(in)::s,W(s)
+real::r
+
+r=0
+do i=1,s
+  r=r+W(i)
+end do
+
+avg_rain=real(r)/s
+
+end function
+
 
 end program
